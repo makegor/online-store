@@ -1,0 +1,98 @@
+.Fotter {
+    margin-top: auto;
+    grid-area: fotter;
+    background-color: rgb(223, 209, 209);
+    display: grid;
+    grid-template-columns: minmax(auto,100px) 1fr minmax(auto,100px);
+    z-index: 3;
+}
+
+.container {
+    padding: 5px 0 0 0;
+    grid-column: 2 / 3;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    font-size: 17px;
+    font-family: 'Roboto';
+}
+
+.logo {
+    margin: 10px auto;
+    color: #000;
+    text-decoration: none;
+}
+
+.logo img {
+    position: relative;
+    left: 40%;
+}
+
+.logo h4 {
+    margin: 0;
+}
+
+.Fotter a img {
+    width: 30px;
+}
+
+.info h4 {
+    font-size: 20px;
+    border-bottom: 2px solid;
+    margin: 25px 10px;
+    padding: 0 0 5px 0;
+}
+
+.contacts {
+    text-align: start;
+}
+
+.contacts h4 {
+    text-align: center;
+}
+
+.contacts div {
+    margin: 10px 10px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 10px;
+}
+
+.pay {
+    text-align: center;
+    font-weight: 200;
+}
+
+.pay img {
+    width: 70px;
+    object-fit: cover;
+    margin: 10px 5%;
+}
+
+.social {
+    margin: 20px auto ;
+}
+
+.social a {
+    margin: 0 5px;
+}
+
+.bottom {
+    display: grid;
+    grid-template-columns: 30px 1fr 30px;
+    margin-bottom: 15px;
+}
+
+.bottom span {
+    grid-column: 2 / 3;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 200;
+}
+
+.bottom img{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}

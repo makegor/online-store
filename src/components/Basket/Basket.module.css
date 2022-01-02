@@ -1,0 +1,239 @@
+.basket__none {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-gap: 20px;
+}
+
+.basket__none img{
+    width: 250px;
+    margin: 0 auto;
+}
+
+.basket__titleNone {
+    font-family: "Mohave";
+    text-align: center;
+    font-size: 40px;
+}
+
+.basket__signIn {
+    text-align: center;
+    color: #000000;
+    font-family: "Montserrat";
+    font-weight: 200;
+    font-size: 40px;
+    padding: 15px;
+    border: 1px solid #000000;
+    background-color: rgb(223, 209, 209, 0.2);
+    width: 10rem;
+    height: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    text-decoration: none;
+    transition: all 0.1s ease 0s;
+}
+
+.basket__signIn:hover {
+    background-color: rgba(223, 209, 209);
+}
+
+.basket__signIn:active {
+    transform: scale(0.8);
+    background-color: rgba(223, 209, 209, 0.5);
+    font-weight: 300;
+}
+
+.basket__page {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: 
+    "title"
+    "basket" 
+    "total";
+}
+
+.basket__title {
+    grid: title;
+    text-align: center;
+    font-family: "Mohave";
+    font-size: 40px;
+    border-bottom: 2px solid;
+}
+
+.basket__total {
+    margin: 90px auto 0 auto;
+    width: auto;
+    font-size: 25px;
+    grid: total;
+    font-family: 'Montserrat';
+    font-weight: 200;
+}
+
+.textTotal {
+    border-top: 3px solid;
+    border-bottom: 3px solid;
+    margin-bottom: 10px;
+    padding: 2px 0;
+    text-align: end;
+}
+
+.price__total {
+    font-weight: 400;
+}
+
+.basket__total button {
+    margin: 0 0 10px 0;
+    width: 100%;
+    height: 50px;
+    border: 2px solid;
+    font-family: "Mohave";
+    font-weight: 500;
+    font-size: 35px;
+    background-color: rgb(223, 209, 209, 0.2);
+    transition: all 0.2s ease 0s;
+    text-decoration: none;
+    outline: 2px solid;
+    outline-offset: 2px;
+    border-radius: 1%;
+}
+
+.basket__total button:hover {
+    background-color: rgb(223, 209, 209);
+    cursor: pointer;
+}
+
+.basket__total button:active {
+    transform: scale(0.95);
+    background-color: rgba(223, 209, 209, 0.1);
+}
+
+.basket {
+    grid: basket;
+    display: grid;
+    grid-template-rows: repeat(auto-fit, auto);
+    grid-gap: 3em;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.basket__product {
+    max-width: 100%;
+    max-height: 100%;
+    display: grid;
+    grid-template-areas:
+    "des des"
+    "img price";
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto auto;
+    grid-gap: 10px;
+}
+
+.description {
+    grid-area: des;
+    font-family: 'Montserrat';
+    font-weight: 500;
+    color:black
+}
+
+.link__product {
+    grid-area: img;
+    text-decoration: none;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.link__product img{
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.price__product {
+    grid-area: price;
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+.price__product span{
+    margin: auto 0 0 0;
+    font-size: 40px;
+    font-family: "Mohave";
+    padding-bottom: 20px;
+    text-align: start;
+}
+
+.price__productTotal {
+    margin: 0 0 auto 0;
+    font-size: 25px;
+    font-family: "Mohave";
+    padding-left: 10px;
+    text-align: start;
+}
+
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #0000008f;
+    top:0;
+    left: 0;
+    opacity: 0;
+    transition: all 0.8s ease 0s;
+}
+
+.popup.active {
+    opacity: 1;
+}
+
+.popup__body {
+    margin: 13rem auto;
+    width: 18rem;
+    height: auto;
+    background-color: white;
+    border-radius: 5%;
+}
+
+.popup__body img {
+    margin: 105px 75px;
+}
+
+.popup__content {
+    list-style: none;
+    padding: 15px;
+    text-align: center;
+    font-family: "Montserrat";
+}
+
+.popup__content img{
+    margin: 5px 0;
+    width: 100px;
+    height: 100px;
+}
+
+.popup__content div:first-child {
+    font-size: 2rem;
+    margin: 0 0 10px 0;
+    border-bottom: 1px solid;
+}
+
+.popup__content div:last-child {
+    margin: 5px 0 0 0;
+    font-size: 12px;
+    color: red;
+}
+
+.popup__content div {
+    font-size: 17px;
+}
+
+.popup__contentDate {
+    opacity: 0;
+}
+
+.popup__content div:nth-child(4),
+.popup__content div:nth-child(5) {
+    margin: 5px 0 0 0;
+    font-size: 20px;
+}

@@ -1,0 +1,94 @@
+.block__element {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+    grid-auto-rows: minmax(200px, auto);
+    grid-gap: 2em; 
+}
+
+.element__product {
+    min-height: 100%;
+    min-height: 100%;
+    text-decoration: none;
+    display: grid;
+    grid-template-rows: 10fr 1fr 1fr;
+}
+
+.product__block{
+    text-decoration: none;
+    min-width: 100%;
+    min-height: 100%;
+    position: relative;
+   transition: 0.2s;
+}
+
+.product__block:hover{
+    transform: scale(1.03);
+}
+
+
+.product__block img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.description {
+    align-items: center;
+    color: black;
+    font-size: 15px;
+    font-family: "Montserrat";
+    font-weight: 300;
+    margin: 5px;
+    white-space: normal;
+    text-decoration: none;
+}
+
+.price{
+    font-size: 25px;
+    font-family: "Montserrat";
+    font-weight: 500;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: end;
+    margin: 0 5px 0 0;
+
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: manmax(auto,1fr) minmax(auto,1fr);
+    grid-gap: 5px;
+}
+
+.buttons button {
+    display: inline-block;
+    border-radius: 0%;
+    background-color: #000000b7;
+    border: none;
+    color: #ffffffe5;
+    text-align: center;
+    font-size: 15px;
+    font-family: "Comfortaa";
+    padding: 5px;
+    transition: all 0.4s ease 0s;
+    cursor: pointer;
+    margin: 2px;
+  }
+
+.buttons button:active {
+    background-color: #000000;
+    transform: scale(0.9);
+}
+
+.button__func {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 2fr;
+    text-align: center;
+    font-family: 'Roboto';
+}
+
+.summ {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-family: "Comfortaa";
+}
