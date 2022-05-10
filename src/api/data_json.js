@@ -55,7 +55,7 @@ export const Data = [
         title: "Purple down jacket",
         price: 1650,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "woman",
         description: {
             color: "Purple",
@@ -72,7 +72,7 @@ export const Data = [
         title: "Beige blazer",
         price: 550,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "woman",
         description: {
             color: "Beige",
@@ -89,7 +89,7 @@ export const Data = [
         title: "Gray knitted sweater",
         price: 240,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "man",
         description: {
             color: "Gray",
@@ -106,7 +106,7 @@ export const Data = [
         title: "Black trousers",
         price: 50,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "woman",
         description: {
             color: "Black",
@@ -123,7 +123,7 @@ export const Data = [
         title: "Navy blue down jacket",
         price: 150,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "man",
         description: {
             color: "Navy blue",
@@ -140,7 +140,7 @@ export const Data = [
         title: "White sweater",
         price: 58,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "kids",
         description: {
             color: "White",
@@ -157,7 +157,7 @@ export const Data = [
         title: "Beige suit ",
         price: 1000,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "woman",
         description: {
             color: "Beige",
@@ -174,7 +174,7 @@ export const Data = [
         title: "White sports trousers",
         price: 300,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "woman",
         description: {
             color: "White",
@@ -191,7 +191,7 @@ export const Data = [
         title: "White knitted sweater",
         price: 210,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "woman",
         description: {
             color: "White",
@@ -208,7 +208,7 @@ export const Data = [
         title: "Pink blazer",
         price: 70,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "kids",
         description: {
             color: "Pink",
@@ -225,7 +225,7 @@ export const Data = [
         title: "Gray sweater",
         price: 180,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "woman",
         description: {
             color: "Gray",
@@ -242,7 +242,7 @@ export const Data = [
         title: "Gray coat",
         price: 3500,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "man",
         description: {
             color: "Gray",
@@ -259,7 +259,7 @@ export const Data = [
         title: "Printed T-shirt",
         price: 20,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "woman",
         description: {
             color: "White",
@@ -276,7 +276,7 @@ export const Data = [
         title: "Teddy coat",
         price: 100,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "kids",
         description: {
             color: "Brown",
@@ -293,7 +293,7 @@ export const Data = [
         title: "Black jeans",
         price: 150,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "woman",
         description: {
             color: "Black",
@@ -310,7 +310,7 @@ export const Data = [
         title: "Вark grey jumper",
         price: 200,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "man",
         description: {
             color: "Вark grey",
@@ -327,7 +327,7 @@ export const Data = [
         title: "Long skirt",
         price: 90,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "woman",
         description: {
             color: "Gray",
@@ -344,7 +344,7 @@ export const Data = [
         title: "Jeans",
         price: 60,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "kids",
         description: {
             color: "Light denim",
@@ -361,7 +361,7 @@ export const Data = [
         title: "Printed T-shirt (longsleeve)",
         price: 37,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "kids",
         description: {
             color: "White / Black",
@@ -378,7 +378,7 @@ export const Data = [
         title: "White longsleeve",
         price: 80,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "man",
         description: {
             color: "White",
@@ -395,7 +395,7 @@ export const Data = [
         title: "Black gumboots",
         price: 100,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "kids",
         description: {
             color: "Black",
@@ -412,7 +412,7 @@ export const Data = [
         title: "White jumper",
         price: 500,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "man",
         description: {
             color: "White",
@@ -429,7 +429,7 @@ export const Data = [
         title: "Sleepwear",
         price: 140,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "kids",
         description: {
             color: "Gray",
@@ -446,7 +446,7 @@ export const Data = [
         title: "Jean jacket",
         price: 76,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "man",
         description: {
             color: "Denim",
@@ -463,7 +463,7 @@ export const Data = [
         title: "White sweatshirt",
         price: 210,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "kids",
         description: {
             color: "White",
@@ -480,7 +480,7 @@ export const Data = [
         title: "Gray oversized sweater",
         price: 81,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "woman",
         description: {
             color: "Gray",
@@ -497,7 +497,7 @@ export const Data = [
         title: "White scarf",
         price: 100,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "man",
         description: {
             color: "White",
@@ -514,7 +514,7 @@ export const Data = [
         title: "Black coat",
         price: 350,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "man",
         description: {
             color: "Black",
@@ -531,7 +531,7 @@ export const Data = [
         title: "Navy blue suit",
         price: 1350,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "woman",
         description: {
             color: "Navy blue",
@@ -548,7 +548,7 @@ export const Data = [
         title: "Buttoned cardigan",
         price: 80,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "kids",
         description: {
             color: "Black",
@@ -565,7 +565,7 @@ export const Data = [
         title: "High boot",
         price: 899,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "woman",
         description: {
             color: "Black",
@@ -582,7 +582,7 @@ export const Data = [
         title: "Olive bomber",
         price: 455,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "man",
         description: {
             color: "Olive",
@@ -599,7 +599,7 @@ export const Data = [
         title: "Yellow dress",
         price: 150,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "woman",
         description: {
             color: "Yellow",
@@ -616,7 +616,7 @@ export const Data = [
         title: "Linen shirt",
         price: 70,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "woman",
         description: {
             color: "Red",
@@ -633,7 +633,7 @@ export const Data = [
         title: "Jacket",
         price: 160,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "kids",
         description: {
             color: "Green",
@@ -650,7 +650,7 @@ export const Data = [
         title: "Bodysuit",
         price: 30,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "kids",
         description: {
             color: "White",
@@ -667,7 +667,7 @@ export const Data = [
         title: "Sports suit",
         price: 50,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "kids",
         description: {
             color: "Green",
@@ -684,7 +684,7 @@ export const Data = [
         title: "Orange sports suit",
         price: 100,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "woman",
         description: {
             color: "Orange",
@@ -701,7 +701,7 @@ export const Data = [
         title: "Navy blue suit",
         price: 260,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "man",
         description: {
             color: "Navy blue",
@@ -718,7 +718,7 @@ export const Data = [
         title: "Black jeans",
         price: 75,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "kids",
         description: {
             color: "Вlack",
@@ -735,7 +735,7 @@ export const Data = [
         title: "Pink blouse",
         price: 25,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "kids",
         description: {
             color: "Pink",
@@ -752,7 +752,7 @@ export const Data = [
         title: "Hoodie with print",
         price: 65,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "kids",
         description: {
             color: "White",
@@ -769,7 +769,7 @@ export const Data = [
         title: "Gray chunky knit sweater",
         price: 75,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "man",
         description: {
             color: "Gray",
@@ -786,7 +786,7 @@ export const Data = [
         title: "Wool vest",
         price: 130,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "woman",
         description: {
             color: "Gray",
@@ -803,7 +803,7 @@ export const Data = [
         title: "Beige suit",
         price: 100,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "kids",
         description: {
             color: "Beige",
@@ -820,7 +820,7 @@ export const Data = [
         title: "Black coat",
         price: 500,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "man",
         description: {
             color: "Вlack",
@@ -837,7 +837,7 @@ export const Data = [
         title: "Sneakers",
         price: 75,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "woman",
         description: {
             color: "Вark green",
@@ -854,7 +854,7 @@ export const Data = [
         title: "Sheepskin coat",
         price: 300,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "man",
         description: {
             color: "Gray",
@@ -871,7 +871,7 @@ export const Data = [
         title: "Sunglasses",
         price: 50,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "kids",
         description: {
             color: "Orange",
@@ -888,7 +888,7 @@ export const Data = [
         title: "Suit",
         price: 1500,
         summ: 0,
-        followed: false,
+        added: false,
         sex: "man",
         description: {
             color: "Gray",

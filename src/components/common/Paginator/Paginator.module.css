@@ -11,10 +11,12 @@
 
 .prev {
     grid-area: prev;
+    position: relative;
 }
 
 .next {
     grid-area: next;
+    position: relative;
 }
 
 .pageNumbers {
@@ -27,9 +29,9 @@
 .paginator button {
     cursor: pointer;
     margin: 0 auto;
-    height: 2.5rem;
-    width: 2.5rem;
-    border: 3px solid rgba(168, 149, 149, 0.801);
+    height: 2rem;
+    width: 2rem;
+    border: 2px solid rgba(168, 149, 149, 0.801);
     border-radius: 20%;
     background-color: rgba(75, 140, 156, 0.2);
     transition: all 0.2s ease 0s;
@@ -42,7 +44,13 @@
 }
 
 .paginator img {
-    height: 2rem;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    height: 1.5rem;
 }
 
 .pageNumber {
@@ -56,6 +64,6 @@
 
 .pageNumber.selectedPage {
     font-weight: 700;
-    border-color: black;
+    border: none;
     background-color: burlywood;
 }

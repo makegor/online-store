@@ -18,7 +18,7 @@ export const API = {
 
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                let data_u = [{ data: [] }, { totalCount: null }];
+                let data_u = [];
                 if (sexId === undefined) {
                     data_u.data = data.filter((d, index) => (currentPage * pageSize > index) && (index >= (currentPage - 1) * pageSize))
                     data_u.totalCount = data.length;
@@ -33,22 +33,22 @@ export const API = {
         })
     },
 
-    addProduct(seconds, ID) {
-        return new Promise((resolve, reject) => {
+    addProduct(ID) {
+        return new Promise((resolve) => {
             setTimeout(() => {
-                data[ID - 1].followed = true;
+                data[ID - 1].added = true;
                 data[ID - 1].summ = 1;
                 localStorage.setItem('data', JSON.stringify(data));
                 const resultCode = 0;
                 resolve(resultCode)
-            }, seconds * 1000)
+            }, 1000)
         })
     },
 
     deleteProduct(seconds, ID) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                data[ID - 1].followed = false;
+                data[ID - 1].added = false;
                 data[ID - 1].summ = 0;
                 localStorage.setItem('data', JSON.stringify(data));
                 const resultCode = 0;
@@ -76,7 +76,7 @@ export const API = {
                     localStorage.setItem('data', JSON.stringify(data));
                 }
                 if (data[ID - 1].summ <= 0) {
-                    data[ID - 1].followed = false;
+                    data[ID - 1].added = false;
                     data[ID - 1].summ = 0;
                     localStorage.setItem('data', JSON.stringify(data));
                 }

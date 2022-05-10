@@ -1,0 +1,29 @@
+.errorPage {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-gap: 5px;
+}
+
+.errorPage img {
+    grid-row: 2;
+    width: 250px;
+    margin: 0 auto;
+}
+
+.errorPage p {
+    grid-row: 1;
+    font-family: "Mohave";
+    text-align: center;
+    font-size: 2rem;
+    margin: 1rem;
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+}
+
+.errorPage a {
+    grid-row: 3;
+    font-size: 20px;
+    margin: 5px auto;
+    text-decoration: none;
+    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+}

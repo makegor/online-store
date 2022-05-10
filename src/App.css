@@ -21,7 +21,11 @@
 
 @media screen and (max-width: 6000px) {
 
-    .Header_header__burger__2B5F_ {
+   .Header_header__burger__2B5F_ {
+        display: none;
+    }
+
+    .Header_header__basket__121VU {
         display: none;
     }
 
@@ -77,6 +81,10 @@
     }
 
     .Header_header__burger__2B5F_ {
+        display: block;
+    }
+
+    .Header_header__basket__121VU {
         display: block;
     }
 

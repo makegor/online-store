@@ -229,7 +229,7 @@
 }
 
 .popup__contentDate {
-    opacity: 0;
+    opacity: 1;
 }
 
 .popup__content div:nth-child(4),
