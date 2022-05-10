@@ -63,6 +63,10 @@
     font-weight: 200;
 }
 
+.pay p {
+    margin: 20px 0 0 0;
+}
+
 .pay img {
     width: 70px;
     object-fit: cover;

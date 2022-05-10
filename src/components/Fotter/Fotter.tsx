@@ -55,11 +55,13 @@ const Fotter = () => {
                             <img src={americanExpress} alt="" />
                             <img src={paypal} alt="" />
                         </div>
+                        <p>
+                            You can pay for purchases in cash upon receipt, or choose another payment method.
+                        </p>
                         <div>
                             <img src={apple} alt="" />
                             <img src={google} alt="" />
                         </div>
-                        <div>You can pay for purchases in cash upon receipt, or choose another payment method.</div>
                     </div>
                 </div>
                 <div className={styles.social}>

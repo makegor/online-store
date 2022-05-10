@@ -9,7 +9,8 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
     grid-gap: 10px;
-    font-family:'Courier New', Courier, monospace;
+    font-family:"Roboto";
+    font-weight: 300;
 }
 
 .product__fullPhoto {
@@ -85,7 +86,8 @@
     border-width: 5px;
     border-radius: 5px;
     font-size: 20px;
-    font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+    font-family: "Roboto";
+    font-weight: 300;
 }
 
 .Textarea:hover,

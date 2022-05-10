@@ -21,7 +21,7 @@ const Header = () => {
                 <span></span>
             </div>
 
-            <Link to="/buy/bag" className={styles.header__basket} />
+            <Link to="/buy/bag" className={styles.header__basket} onClick={() => setMenuActive(false)}/>
 
             <div className={cn({ [styles.header__menu_active]: menuActive }, styles.header__menu)} >
 
