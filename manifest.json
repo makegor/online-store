@@ -3,14 +3,8 @@
   "name": "online-store",
   "icons": [
     {
-      "src": "logo.png",
-      "sizes": "64x64 32x32 24x24 16x16 192x192 512x512",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
       "src": "LogoManifest.jpg",
-      "sizes": "64x64 32x32 24x24 16x16 192x192 512x512",
+      "sizes": "16x16 24x24 32x32 64x64 192x192 512x512",
       "type": "image/jpg",
       "purpose": "maskable"
     }
@@ -18,5 +12,5 @@
   "start_url": ".",
   "display": "fullscreen",
   "theme_color": "#5f9ea0",
-  "background_color": "#fed4dc"
+  "background_color": "#dfd1d1b3"
 }
