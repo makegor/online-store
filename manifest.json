@@ -3,9 +3,9 @@
   "name": "online-store",
   "icons": [
     {
-      "src": "LogoManifest.jpg",
+      "src": "LogoManifest.png",
       "sizes": "16x16 24x24 32x32 64x64 192x192 512x512",
-      "type": "image/jpg",
+      "type": "image/png",
       "purpose": "maskable"
     }
   ],
