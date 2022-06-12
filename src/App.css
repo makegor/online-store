@@ -1,142 +1,36 @@
 .app-wrapper {
-    position: absolute;
-    min-height: 100%; 
-    min-width: 100%;
+    /* position: absolute; */
+    min-height: 100%;
+    width: 100%;
     display: grid;
     grid-template-areas:
-    "header header header header" 
-    ". content content ." 
-    "fotter fotter fotter fotter";
-    grid-template-columns: minmax(auto,100px) minmax(130px,1fr) minmax(130px,1fr) minmax(auto,100px);
+        "header"
+        "content"
+        "fotter";
+    grid-template-columns: 1fr;
     grid-template-rows: 100px 1fr auto;
-    background-color: rgba(223, 209, 209, 0.7);
+    background-color: #dfd1d1b3;
     overflow: hidden;
+
 }
 
 .wraper-content {
+    min-height: 85vh;
     max-height: 100%;
+    max-width: 1800px;
+    width: 100%;
+    margin: 0 auto;
     grid-area: content;
-    padding: 15px 0 60px 0;
+    padding: 0;
 }
 
-@media screen and (max-width: 6000px) {
-
-   .Header_header__burger__2B5F_ {
-        display: none;
-    }
-
-    .Header_header__basket__121VU {
-        display: none;
-    }
-
-    .Header_header__menu_active__2xW3A  {
-        display: none;
-    }
-
-    .Header_header__list__2Ih_i {
-        color:white;
-        display: grid;
-        grid-template-columns: auto auto auto auto;
-        grid-gap: 20px;
-        justify-items: end;
-        align-items: center;
-    }
-
-    .Product_button__2BQDx {
-        width: 200px;
-    }
-
-    .Basket_basket__total__CKJ2R {
-        position: fixed;
-        top: 200px;
-        right: 10px;
-    }
-
-    .Fotter_logo__2fwYf {
-        display: none;
-    }
-
-    .Fotter_info__27n0M {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-
-}
-
-@media screen and (max-width: 767px){
+@media screen and (max-width: 767px) {
 
     .app-wrapper {
         grid-template-rows: 40px minmax(auto, 100%) auto;
     }
 
-    .Header_header__1pP_n:before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 40px;
-        background-color: cadetblue;
-        z-index: 4;
-    }
-
-    .Header_header__burger__2B5F_ {
-        display: block;
-    }
-
-    .Header_header__basket__121VU {
-        display: block;
-    }
-
-    .Header_header__logo__3B-ly {
-        display: none;
-    }
-
-    .Header_header__menu__2US7L{
-        position: fixed;
-        top: -100%;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(46, 196, 126, 0.473);
-        padding: 0px 0 0 0;
-    }
-
-    .Header_header__list__2Ih_i {
-    color:white;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: minmax(auto) minmax(auto) auto auto;
-    justify-items: center;
-    text-transform: uppercase; 
-    margin: 0;
-    padding: 0;
-    }
-
-    .wraper-content{
+    .wraper-content {
         max-width: 767px;
-    }   
-
-    .Product_button__2BQDx {
-        width: 100%;
-    }
-
-    .Basket_basket__total__CKJ2R {
-        position: relative;
-        top: 0;
-        right: 0;
-    }
-
-    .Fotter_logo__2fwYf {
-        display: grid;
-    }
-
-    .Fotter_info__27n0M {
-        display: grid;
-        grid-template-columns: 1fr;
-    }
-
-    .Fotter_bottom__TIOLq img {
-        display: none;
     }
 }

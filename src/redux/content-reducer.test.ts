@@ -1,4 +1,4 @@
-import contentReducer, { addProductSuccess, deleteProductSuccess, plusSuccess, minusSuccess, ContentState } from "./content-reducer"
+import contentReducer, { actionsContent, ContentState } from "./content-reducer"
 
 let state: ContentState
 
@@ -67,7 +67,7 @@ beforeEach(() => {
 
 test("Add - Success", () => {
 
-    const newState = contentReducer(state, addProductSuccess("2"))
+    const newState = contentReducer(state, actionsContent.addProductSuccess("2"))
 
     expect(newState.content[1].added).toBeTruthy()
     expect(newState.content[1].summ).toBe(1)
@@ -76,7 +76,7 @@ test("Add - Success", () => {
 
 test("Delete - Success", () => {
 
-    const newState = contentReducer(state, deleteProductSuccess("3"))
+    const newState = contentReducer(state, actionsContent.deleteProductSuccess("3"))
 
     expect(newState.content[2].added).toBeFalsy()
     expect(newState.content[2].summ).toBe(0)
@@ -85,7 +85,7 @@ test("Delete - Success", () => {
 
 test("Add one product - Success", () => {
 
-    const newState = contentReducer(state, plusSuccess("2"))
+    const newState = contentReducer(state, actionsContent.plusSuccess("2"))
 
     expect(newState.content[1].summ).toBe(1)
     expect(newState.content[1].added).toBeTruthy()
@@ -93,7 +93,7 @@ test("Add one product - Success", () => {
 
 test("Remove one product - Success", () => {
 
-    const newState = contentReducer(state, minusSuccess("3"))
+    const newState = contentReducer(state, actionsContent.minusSuccess("3"))
 
     expect(newState.content[2].summ).toBe(1)
     expect(newState.content[2].added).toBeTruthy()

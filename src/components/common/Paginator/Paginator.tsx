@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
+import { getIsFetching } from "../../../redux/content-selectors"
 
 import styles from './Paginator.module.css'
 import cn from 'classnames'
@@ -13,7 +15,9 @@ interface PagiatorProps {
     portionSize?: number
 }
 
-const Paginator: React.FC<PagiatorProps> = ({ totalCount, pageSize, currentPage = 1, onPageChanged, portionSize = 2 }) => {
+const Paginator: React.FC<PagiatorProps> = React.memo(({ totalCount, pageSize, currentPage, onPageChanged, portionSize = 2 }) => {
+
+    const isFetching = useSelector(getIsFetching)
 
     let pagesCount = Math.ceil(totalCount / pageSize)
 
@@ -27,7 +31,7 @@ const Paginator: React.FC<PagiatorProps> = ({ totalCount, pageSize, currentPage 
         pages.push(i)
     }
 
-    return <div className={styles.paginator} >
+    return <div className={cn({ [styles.paginator_active]: isFetching || totalCount === 0 }, styles.paginator)}>
         {portionNumber > 1 &&
             <button className={styles.prev} onClick={() => { setPortionNumber(portionNumber - 1) }}><img alt="" src={prev} /></button>}
         <div className={styles.pageNumbers}>
@@ -43,6 +47,6 @@ const Paginator: React.FC<PagiatorProps> = ({ totalCount, pageSize, currentPage 
         {portionCount > portionNumber &&
             <button className={styles.next} onClick={() => { setPortionNumber(portionNumber + 1) }}><img alt="" src={next} /></button>}
     </div>
-}
+})
 
 export default Paginator

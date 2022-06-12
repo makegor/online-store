@@ -1,8 +1,8 @@
-import productReducer, { deleteReviewsAC } from "./product-reducer";
+import productReducer, { actionsProduct } from "./product-reducer";
 
 it('after deleting length of messages should be decrement', () => {
 
-    let action = deleteReviewsAC(1);
+    let action = actionsProduct.deleteReviewsAC(1);
     let state = {
         reviews: [
             { id: 1, message: "cardigan grosse maille ajourée très joli au porté", rating: 5 },

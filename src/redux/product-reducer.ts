@@ -1,7 +1,6 @@
 import { API } from "../api/api"
-import { Dispatch } from 'redux'
 import { ProductType, ReviewsType } from "../types/types"
-import { RootState } from "./store"
+import { BaseThunkType, InferActionsTypes } from "./store"
 
 const SET_PRODUCT = 'work/src/redux/product-reducer/SET_PRODUCT'
 const TOGGLE_IS_FETCHING = 'work/src/redux/product-reducer/TOGGLE_IS_FETCHING'
@@ -17,9 +16,10 @@ const inisialState = {
 
 type ProductState = typeof inisialState
 
-type ProductAction = SetProductACAction | ToggleIsFetchingAction | AddReviewsACAction | DeleteReviewsACAction | SetReviewsAction
+type ProductAction = InferActionsTypes<typeof actionsProduct>
+type ThunkType = BaseThunkType<ProductAction>
 
-const productReducer = (state = inisialState, action: ProductAction):ProductState => {
+const productReducer = (state = inisialState, action: ProductAction): ProductState => {
     switch (action.type) {
 
         case SET_PRODUCT:
@@ -57,53 +57,28 @@ const productReducer = (state = inisialState, action: ProductAction):ProductStat
     }
 }
 
-interface SetProductACAction {
-    type: typeof SET_PRODUCT
-    product: ProductType
+export const actionsProduct = {
+    setProductAC: (product: ProductType) => ({ type: SET_PRODUCT, product } as const),
+    toggleIsFetching: (isFetching: boolean) => ({ type: TOGGLE_IS_FETCHING, isFetching } as const),
+    addReviewsAC: (values: ReviewsType) => ({ type: ADD_REVIEWS, values } as const),
+    deleteReviewsAC: (reviewsId: number) => ({ type: DELETE_REVIEWS, reviewsId } as const),
+    setReviews: (reviews: Array<ReviewsType>) => ({ type: SET_REVIEWS, reviews } as const),
 }
-const setProductAC = (product: ProductType): SetProductACAction => ({ type: SET_PRODUCT, product })
 
-interface ToggleIsFetchingAction {
-    type: typeof TOGGLE_IS_FETCHING
-    isFetching: boolean
-}
-const toggleIsFetching = (isFetching: boolean): ToggleIsFetchingAction => ({ type: TOGGLE_IS_FETCHING, isFetching })
-
-interface AddReviewsACAction {
-    type: typeof ADD_REVIEWS
-    values: ReviewsType
-}
-const addReviewsAC = (values: ReviewsType): AddReviewsACAction => ({ type: ADD_REVIEWS, values })
-
-interface DeleteReviewsACAction {
-    type: typeof DELETE_REVIEWS
-    reviewsId: number
-}
-export const deleteReviewsAC = (reviewsId: number): DeleteReviewsACAction => ({ type: DELETE_REVIEWS, reviewsId })
-
-interface SetReviewsAction {
-    type: typeof SET_REVIEWS
-    reviews: Array<ReviewsType>
-}
-const setReviews = (reviews: Array<ReviewsType>): SetReviewsAction => ({ type: SET_REVIEWS, reviews })
-
-type DispatchType = Dispatch<ProductAction>
-type GetStateType = () => RootState
-
-export const setProduct = (id: string | undefined) => {
-    return async (dispatch: DispatchType, getState: GetStateType) => {
-        dispatch(toggleIsFetching(true))
+export const setProduct = (id: string | undefined):ThunkType => {
+    return async (dispatch) => {
+        dispatch(actionsProduct.toggleIsFetching(true))
         const data = await API.getProduct(1, id)
-        dispatch(setProductAC(data))
+        dispatch(actionsProduct.setProductAC(data))
         const reviews = await API.getReviews(1, id)
-        dispatch(setReviews(reviews))
-        dispatch(toggleIsFetching(false))
+        dispatch(actionsProduct.setReviews(reviews))
+        dispatch(actionsProduct.toggleIsFetching(false))
     }
 }
 
-export const addReviews = (values: ReviewsType) => {
-    return async (dispatch: DispatchType, getState: GetStateType) => {
-        dispatch(addReviewsAC(values))
+export const addReviews = (values: ReviewsType):ThunkType => {
+    return async (dispatch, getState) => {
+        dispatch(actionsProduct.addReviewsAC(values))
         const reviews = getState().Product.reviews
         await API.sendReviews(1, reviews)
     }

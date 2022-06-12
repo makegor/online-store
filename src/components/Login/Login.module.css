@@ -1,18 +1,19 @@
 .container {
-    min-width: 100%;
+    max-width: 500px;
+    margin: 20vh auto;
+    padding: 0 20px;
     display: grid;
-    grid-template-columns: minmax(auto, 200) 1fr minmax(auto, 200);
-    grid-template-rows: auto auto;
+    grid-template: auto auto / 1fr;
     grid-template-areas: 
-    ". title ."
-    ". container .";
+    "title"
+    "container";
 }
 
 .container h1:first-child {
     grid-area: title;
     border-bottom: 2px solid;
     font-size: 40px;
-    margin-bottom: 20%;
+    margin-bottom: 5vh;
 }
 
 .container :nth-child(n) {

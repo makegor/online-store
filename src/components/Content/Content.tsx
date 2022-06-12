@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { setContentThunk, addProduct, deleteProduct, plusProduct, minusProduct } from "../../redux/content-reducer"
 import { getContent, getIsFetching, getFollowingInProgress, getPageSize, getTotalCount, getCurrentPage } from "../../redux/content-selectors"
 import ContentElement from "./ContentElement"
@@ -8,6 +8,7 @@ import Paginator from '../common/Paginator/Paginator'
 import ErrorPage from '../common/ErrorPage/ErrorPage'
 import styles from "./Content.module.css"
 import Preloader from "../common/preloader/preloader"
+import mainNewColl from "../../assecs/images/Content/bgMain.jpg"
 
 const Content = () => {
 
@@ -23,9 +24,9 @@ const Content = () => {
     const sexId = useParams().id
 
     useEffect(() => {
-        dispatch(setContentThunk(sexId, currentPage, pageSize))
+        dispatch(setContentThunk(sexId, 1, pageSize))
         window.scrollTo(0, 0)
-    }, [sexId, currentPage])
+    }, [sexId])
 
     const onPageChanged = (currentPage: number) => {
         dispatch(setContentThunk(sexId, currentPage, pageSize))
@@ -44,13 +45,28 @@ const Content = () => {
         minusProduct={(ID) => dispatch(minusProduct(ID))}
         plusProduct={(ID) => dispatch(plusProduct(ID))}
         followingInProgress={followingInProgress} />)
-        
+
     return (
         <div>
             {isFetching ? <Preloader /> :
                 <div> {totalCount !== 0
-                    ? <div className={styles.block__element}>
-                        {ElementContent}
+                    ? <div> {sexId === undefined && currentPage === 1 ? <div className={styles.mainPage}>
+                        <div className={styles.mainPage__img}>
+                            <img src={mainNewColl} alt="Main img new collection" />
+                        </div>
+                        <div className={styles.mainPage__item}>
+                            <button>
+                                <Link to="/woman">new collection</Link>
+                            </button>
+                        </div>
+                        <div className={styles.block__element}>
+                            {ElementContent}
+                        </div>
+                    </div>
+                        : <div className={styles.block__element}>
+                            {ElementContent}
+                        </div>
+                    }
                     </div>
                     : <ErrorPage />
                 }

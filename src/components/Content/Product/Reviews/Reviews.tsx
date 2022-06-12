@@ -50,18 +50,18 @@ const Reviews = () => {
                     })
                 }
             </div>
-            <div key={p.id} className={styles.reviews}> - {p.review}</div>
+            <p key={p.id}>{p.review}</p>
         </div>)
 
     const [rating, setRating] = React.useState<number>(0)
     const [hover, setHover] = React.useState<number>(0)
 
     return (
-        <div>
+        <div className={styles.Rewiers}>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <textarea
                     className={styles.Textarea}
-                    placeholder="New reviews..."
+                    placeholder="new review..."
                     {...register('review', {
                         required: "Required field",
                         minLength: {
@@ -69,12 +69,12 @@ const Reviews = () => {
                             message: "Minimum 5"
                         },
                         maxLength: {
-                            value: 150,
-                            message: "Maximum 150"
+                            value: 250,
+                            message: "Maximum 250"
                         }
                     })}
                 />
-               {errors?.review && <div className={styles.message__error}>{errors?.review?.message || "Error!"}</div>}
+                {errors?.review && <div className={styles.message__error}>{errors?.review?.message || "Error!"}</div>}
                 <div className={styles.rating} >
                     {
                         [...Array(5)].map((star, i) => {
@@ -106,9 +106,8 @@ const Reviews = () => {
                     }
                 </div>
                 {errors?.rating?.message && <div className={styles.message__error}>{errors?.rating?.message || "Required field !"}</div>}
-                <button className={styles.button} disabled={!isValid}>Send</button>
+                <button className={styles.button} disabled={!isValid}>Send review ⇓</button>
             </form>
-
             <div className={styles.rewiersElement}>
                 {rewiersElement}
             </div>

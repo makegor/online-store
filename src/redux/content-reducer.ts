@@ -1,6 +1,8 @@
 import { API } from "../api/api"
-import { ThunkAction } from "redux-thunk"
 import { ProductType } from "../types/types"
+import { BaseThunkType, InferActionsTypes } from "./store"
+import { actionsProduct } from "./product-reducer"
+import { actionsBasket } from "./basket-reducer"
 
 const SET_CONTENT = 'work/src/redux/content-reducer/SET_CONTENT'
 const TOGGLE_IS_FETCHING = 'work/src/redux/content-reducer/TOGGLE_IS_FETCHING'
@@ -25,14 +27,15 @@ const inisialState = {
     content: [] as Array<ProductType>,
     isFetching: true,
     followingInProgress: [] as Array<string>,
-    pageSize: 10,
+    pageSize: 12,
     totalCount: 0,
     currentPage: 1
 }
 
-type ContentAction = SetContentAction | ToggleIsFetchingAction | ToggleFollowingProgressAction | AddProductSuccessAction | DeleteProductSuccessAction | MinusSuccessAction | PlusSuccessAction | SetTotalCountAction | ChangePageAction
-
-type ThunkType = ThunkAction<Promise<void>, ContentState, unknown, ContentAction>
+type ContentAction = InferActionsTypes<typeof actionsContent>
+type ProductActionTypes = InferActionsTypes<typeof actionsProduct>
+type BasketActionTypes = InferActionsTypes<typeof actionsBasket>
+type ThunkType = BaseThunkType<ContentAction | ProductActionTypes | BasketActionTypes>
 
 const contentReducer = (state = inisialState, action: ContentAction): ContentState => {
     switch (action.type) {
@@ -123,113 +126,79 @@ const contentReducer = (state = inisialState, action: ContentAction): ContentSta
 }
 
 
-interface SetContentAction {
-    type: typeof SET_CONTENT
-    content: Array<ProductType>
+export const actionsContent = {
+    setContent: (content: Array<ProductType>) => ({ type: SET_CONTENT, content } as const),
+    toggleIsFetching: (isFetching: boolean) => ({ type: TOGGLE_IS_FETCHING, isFetching } as const),
+    toggleFollowingProgress: (isFetching: boolean, Id: string) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, Id } as const),
+    addProductSuccess: (Id: string) => ({ type: ADD_PRODUCT, Id } as const),
+    deleteProductSuccess: (Id: string) => ({ type: DELETE_PRODUCT, Id } as const),
+    minusSuccess: (Id: string) => ({ type: MINUS_PRODUCT, Id } as const),
+    plusSuccess: (Id: string) => ({ type: PLUS_PRODUCT, Id } as const),
+    setTotalCount: (total: number) => ({ type: SET_TOTAL_COUNT, total } as const),
+    changePage: (page: number) => ({ type: CHANGE_PAGE, page } as const),
 }
-const setContent = (content: Array<ProductType>): SetContentAction => ({ type: SET_CONTENT, content })
-
-interface ToggleIsFetchingAction {
-    type: typeof TOGGLE_IS_FETCHING
-    isFetching: boolean
-}
-const toggleIsFetching = (isFetching: boolean): ToggleIsFetchingAction => ({ type: TOGGLE_IS_FETCHING, isFetching })
-
-interface ToggleFollowingProgressAction {
-    type: typeof TOGGLE_IS_FOLLOWING_PROGRESS
-    isFetching: boolean
-    Id: string
-}
-export const toggleFollowingProgress = (isFetching: boolean, Id: string): ToggleFollowingProgressAction => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, Id })
-
-interface AddProductSuccessAction {
-    type: typeof ADD_PRODUCT
-    Id: string
-}
-export const addProductSuccess = (Id: string): AddProductSuccessAction => ({ type: ADD_PRODUCT, Id })
-
-interface DeleteProductSuccessAction {
-    type: typeof DELETE_PRODUCT
-    Id: string
-}
-export const deleteProductSuccess = (Id: string): DeleteProductSuccessAction => ({ type: DELETE_PRODUCT, Id })
-
-interface MinusSuccessAction {
-    type: typeof MINUS_PRODUCT
-    Id: string
-}
-export const minusSuccess = (Id: string): MinusSuccessAction => ({ type: MINUS_PRODUCT, Id })
-
-interface PlusSuccessAction {
-    type: typeof PLUS_PRODUCT
-    Id: string
-}
-export const plusSuccess = (Id: string): PlusSuccessAction => ({ type: PLUS_PRODUCT, Id })
-
-interface SetTotalCountAction {
-    type: typeof SET_TOTAL_COUNT
-    total: number
-}
-const setTotalCount = (total: number): SetTotalCountAction => ({ type: SET_TOTAL_COUNT, total })
-
-interface ChangePageAction {
-    type: typeof CHANGE_PAGE
-    page: number
-}
-const changePage = (page: number): ChangePageAction => ({ type: CHANGE_PAGE, page })
-
 
 export const setContentThunk = (sexId: string | undefined, currentPage: number, pageSize: number): ThunkType => {
     return async (dispatch) => {
-        dispatch(toggleIsFetching(true))
+        dispatch(actionsContent.toggleIsFetching(true))
         let data = await API.getContent(1, sexId, currentPage, pageSize)
-        dispatch(setContent(data.data))
-        dispatch(setTotalCount(data.totalCount))
-        dispatch(changePage(currentPage))
-        dispatch(toggleIsFetching(false))
+        dispatch(actionsContent.setContent(data.data))
+        dispatch(actionsContent.setTotalCount(data.totalCount))
+        dispatch(actionsContent.changePage(currentPage))
+        dispatch(actionsContent.toggleIsFetching(false))
     }
 }
 
 export const addProduct = (Id: string): ThunkType => {
-    return async (dispatch) => {
-        dispatch(toggleFollowingProgress(true, Id))
+    return async (dispatch, getState) => {
+        dispatch(actionsContent.toggleFollowingProgress(true, Id))
         const resultCode = await API.addProduct(Id)
         if (resultCode === 0) {
-            dispatch(addProductSuccess(Id))
+            dispatch(actionsContent.addProductSuccess(Id))
+            const product = await API.getProduct(1, Id)
+            dispatch(actionsProduct.setProductAC(product))
         }
-        dispatch(toggleFollowingProgress(false, Id))
+        dispatch(actionsContent.toggleFollowingProgress(false, Id))
     }
 }
 
 export const deleteProduct = (Id: string): ThunkType => {
     return async (dispatch) => {
-        dispatch(toggleFollowingProgress(true, Id))
+        dispatch(actionsContent.toggleFollowingProgress(true, Id))
         let resultCode = await API.deleteProduct(1, Id)
         if (resultCode === 0) {
-            dispatch(deleteProductSuccess(Id))
-            dispatch(toggleFollowingProgress(false, Id))
+            dispatch(actionsContent.deleteProductSuccess(Id))
+            const product = await API.getProduct(1, Id)
+            dispatch(actionsProduct.setProductAC(product))
+            const basket = await API.getBasket(2)
+            dispatch(actionsBasket.setBasketAC(basket))
+            dispatch(actionsContent.toggleFollowingProgress(false, Id))
         }
     }
 }
 
 export const minusProduct = (Id: string): ThunkType => {
     return async (dispatch) => {
-        dispatch(toggleFollowingProgress(true, Id))
+        dispatch(actionsContent.toggleFollowingProgress(true, Id))
         let resultCode = await API.minusProduct(1, Id)
         if (resultCode === 0) {
-            dispatch(minusSuccess(Id))
-            dispatch(toggleFollowingProgress(false, Id))
+            dispatch(actionsContent.minusSuccess(Id))
+            const product = await API.getProduct(1, Id)
+            dispatch(actionsProduct.setProductAC(product))
+            dispatch(actionsContent.toggleFollowingProgress(false, Id))
         }
     }
 }
 
 export const plusProduct = (Id: string): ThunkType => {
     return async (dispatch) => {
-        dispatch(toggleFollowingProgress(true, Id))
+        dispatch(actionsContent.toggleFollowingProgress(true, Id))
         let resultCode = await API.plusProduct(1, Id)
         if (resultCode === 0) {
-            dispatch(plusSuccess(Id))
-            dispatch(toggleFollowingProgress(false, Id))
+            dispatch(actionsContent.plusSuccess(Id))
+            const product = await API.getProduct(1, Id)
+            dispatch(actionsProduct.setProductAC(product))
+            dispatch(actionsContent.toggleFollowingProgress(false, Id))
         }
     }
 }

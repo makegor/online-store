@@ -5,7 +5,7 @@
     grid-template-areas: " . prev number next .";
     grid-gap: 10px;
     cursor: pointer;
-    margin: 3rem 0 0 0;
+    margin: 3rem 0;
     text-align: center;
 }
 
@@ -41,6 +41,10 @@
     background-color: rgba(75, 140, 156, 0.8);
     transform: scale(0.8);
 
+}
+
+.paginator_active {
+    display: none;
 }
 
 .paginator img {

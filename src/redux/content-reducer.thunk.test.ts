@@ -1,4 +1,4 @@
-import { addProduct, toggleFollowingProgress, addProductSuccess} from "./content-reducer"
+import { addProduct, actionsContent } from "./content-reducer"
 import {API} from '../api/api'
 jest.mock('../api/api')
 const APImock = API as jest.Mocked<typeof API>
@@ -16,6 +16,6 @@ test("Thunk addProduct - Success", async () => {
     await thunk(dispatchMock, getStateMock, {})
 
     expect(dispatchMock).toBeCalledTimes(2)
-    expect(dispatchMock).toHaveBeenNthCalledWith(1, toggleFollowingProgress(true,"1"))
-    expect(dispatchMock).toHaveBeenNthCalledWith(2, toggleFollowingProgress(false,"1"))
+    expect(dispatchMock).toHaveBeenNthCalledWith(1, actionsContent.toggleFollowingProgress(true,"1"))
+    expect(dispatchMock).toHaveBeenNthCalledWith(2, actionsContent.toggleFollowingProgress(false,"1"))
 })

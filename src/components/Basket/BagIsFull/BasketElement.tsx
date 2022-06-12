@@ -1,9 +1,12 @@
 import React from 'react'
 import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux"
+import { deleteProduct } from "../../../redux/content-reducer"
+import { getFollowingInProgress } from "../../../redux/content-selectors"
 
 import styles from "../Basket.module.css"
 
-interface BasketElement{
+interface BasketElement {
     id: string
     title: string
     photo: string
@@ -11,7 +14,10 @@ interface BasketElement{
     summ: number
 }
 
-let BasketElement: React.FC<BasketElement> = React.memo(({id, title, photo, price, summ}) => {
+let BasketElement: React.FC<BasketElement> = React.memo(({ id, title, photo, price, summ }) => {
+
+    const dispatch = useDispatch()
+    const followingInProgress = useSelector(getFollowingInProgress)
 
     return (
         <div>
@@ -20,10 +26,11 @@ let BasketElement: React.FC<BasketElement> = React.memo(({id, title, photo, pric
                 <Link to={'/product/' + id} className={styles.link__product}>
                     <img alt="" src={photo} />
                 </Link>
+                <button className={styles.btn__deleteProduct} disabled={followingInProgress.some(Id => Id === id)} onClick={() => { dispatch(deleteProduct(id)) }}>Delete ⊗</button>
                 <div className={styles.price__product}>
-                    <span>{price} $</span>
+                    <span>{summ}^ {price} $</span>
                     <div className={styles.price__productTotal}>
-                        <div> ^{summ} = {price * summ} $</div>
+                        <div>{price * summ} $</div>
                     </div>
                 </div>
             </div>

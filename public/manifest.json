@@ -3,13 +3,45 @@
   "name": "online-store",
   "icons": [
     {
-      "src": "logo.png",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/png"
+      "src": "./icons/icon-64-64.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./icons/icon-96-96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./icons/icon-144-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./icons/icon-256-256.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./icons/icon-512-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./icons/logo.png",
+      "sizes": "16x16 24x24 32x32",
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
   "start_url": ".",
   "display": "fullscreen",
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff"
+  "orientation": "landscape",
+  "theme_color": "#5f9ea0",
+  "background_color": "#dfd1d1b3"
 }

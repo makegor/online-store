@@ -1,6 +1,6 @@
 import { API } from "../api/api"
-import { ThunkAction } from "redux-thunk"
 import { ProductType } from "../types/types"
+import { BaseThunkType, InferActionsTypes } from "./store"
 
 const GET_ORDER_NUMBER = 'work/src/redux/basket-reducer/GET_ORDER_NUMBER'
 const TOGGLE_IS_FETCHING = 'work/src/redux/basket-reducer/TOGGLE_IS_FETCHING'
@@ -27,9 +27,8 @@ const inisialState = {
     isAuth: false //authReducer + common isFetching
 }
 
-type BasketAction = GetOrderNumberAction | ToggleFollowingProgressAction | SetPopupAction | SetBasketACAction | ToggleIsFetchingAction | GetIsAuthAction
-
-type ThunkType = ThunkAction<Promise<void>, BasketState, unknown, BasketAction>
+type BasketAction = InferActionsTypes<typeof actionsBasket>
+type ThunkType = BaseThunkType<BasketAction>
 
 const basketReducer = (state = inisialState, action: BasketAction):BasketState => {
     switch (action.type) {
@@ -67,79 +66,50 @@ const basketReducer = (state = inisialState, action: BasketAction):BasketState =
     }
 }
 
-
-interface GetOrderNumberAction {
-    type: typeof GET_ORDER_NUMBER
-    orderNumber: number
+export const actionsBasket = {
+    getOrderNumber: (orderNumber: number) => ({ type: GET_ORDER_NUMBER, orderNumber } as const),
+    toggleFollowingProgress : (isFetching: boolean) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching } as const),
+    setPopup : (bool: boolean) => ({ type: POPUP, bool } as const),
+    setBasketAC : (basket: Array<ProductType>) => ({ type: SET_BASKET, basket } as const),
+    toggleIsFetching : (isFetching: boolean) => ({ type: TOGGLE_IS_FETCHING, isFetching } as const),
+    getIsAuth : (isAuth: boolean) => ({ type: GET_IS_AUTH, isAuth } as const)
 }
-const getOrderNumber = (orderNumber: number):GetOrderNumberAction => ({ type: GET_ORDER_NUMBER, orderNumber })
-
-interface ToggleFollowingProgressAction {
-    type: typeof TOGGLE_IS_FOLLOWING_PROGRESS
-    isFetching: boolean
-}
-const toggleFollowingProgress = (isFetching: boolean):ToggleFollowingProgressAction => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching })
-
-interface SetPopupAction {
-    type: typeof POPUP
-    bool: boolean
-}
-const setPopup = (bool: boolean):SetPopupAction => ({ type: POPUP, bool })
-
-interface SetBasketACAction {
-    type: typeof SET_BASKET
-    basket: Array<ProductType>
-}
-const setBasketAC = (basket: Array<ProductType>):SetBasketACAction => ({ type: SET_BASKET, basket })
-
-interface ToggleIsFetchingAction {
-    type: typeof TOGGLE_IS_FETCHING
-    isFetching: boolean
-}
-const toggleIsFetching = (isFetching: boolean):ToggleIsFetchingAction => ({ type: TOGGLE_IS_FETCHING, isFetching })
-
-interface GetIsAuthAction {
-    type: typeof GET_IS_AUTH
-    isAuth: boolean
-}
-const getIsAuth = (isAuth: boolean):GetIsAuthAction => ({ type: GET_IS_AUTH, isAuth })
-
 
 export const setBasket = ():ThunkType => {
     return async (dispatch) => {
-        dispatch(toggleIsFetching(true))
+        dispatch(actionsBasket.toggleIsFetching(true))
         const isAuth = await API.getIsAuth()
-        dispatch(getIsAuth(isAuth))
+        dispatch(actionsBasket.getIsAuth(isAuth))
         const basket = await API.getBasket(2)
-        dispatch(setBasketAC(basket))
-        dispatch(toggleIsFetching(false))
+        dispatch(actionsBasket.setBasketAC(basket))
+        dispatch(actionsBasket.toggleIsFetching(false))
     }
 }
 
 export const buyProduct = (content: Array<object>):ThunkType => {
     return async (dispatch) => {
-        dispatch(setPopup(true))
-        dispatch(toggleFollowingProgress(true))
+        dispatch(actionsBasket.setPopup(true))
+        dispatch(actionsBasket.toggleFollowingProgress(true))
         try {
             let orderNumber = await API.buyProduct(4, content)
-            dispatch(getOrderNumber(orderNumber))
+            dispatch(actionsBasket.getOrderNumber(orderNumber))
         } catch (e) {
             console.error(e)
         }
         finally {
-            dispatch(toggleFollowingProgress(false))
+            dispatch(actionsBasket.toggleFollowingProgress(false))
         }
     }
 }
 
 export const buyProductSuccess = ():ThunkType => {
     return async (dispatch) => {
-        dispatch(toggleIsFetching(true))
+        dispatch(actionsBasket.toggleIsFetching(true))
         await API.emptyTrash()
-        dispatch(setPopup(false))
+        dispatch(actionsBasket.setPopup(false))
         //dispatch(getOrderNumber(null))
-        dispatch(setBasketAC([]))
-        dispatch(toggleIsFetching(false))
+        dispatch(actionsBasket.setBasketAC([]))
+        dispatch(actionsBasket.toggleIsFetching(false))
     }
 }
 

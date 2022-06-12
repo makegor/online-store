@@ -1,5 +1,5 @@
 import { API } from "../api/api"
-import { ThunkAction } from "redux-thunk"
+import { BaseThunkType, InferActionsTypes } from "./store"
 
 const SET_USER_DATA = 'work/src/redux/auth-reducer/SET_USER_DATA'
 const TOGGLE_IS_FETCHING = 'work/src/redux/auth-reducer/TOGGLE_IS_FETCHING'
@@ -28,7 +28,9 @@ const inistialState: AuthState = {
   isFetching: false
 }
 
-type AuthAction = SetUserDataAction | ToggleIsFetchingAction
+type AuthAction = InferActionsTypes<typeof actionsAuth>
+type ThunkType = BaseThunkType<AuthAction>
+
 
 const authReducer = (state = inistialState, action: AuthAction) => {
 
@@ -47,30 +49,30 @@ const authReducer = (state = inistialState, action: AuthAction) => {
   }
 }
 
-type ThunkType = ThunkAction<Promise<void>, AuthState, unknown, AuthAction>
+const actionsAuth = {
+  toggleIsFetching: (isFetching: boolean) => ({ type: TOGGLE_IS_FETCHING, isFetching } as const),
+  setAuthUserData: (email: string | null, userId: number | null, isAuth: boolean) => ({ type: SET_USER_DATA, payload: { email, userId, isAuth } } as const),
+}
 
-const toggleIsFetching = (isFetching: boolean):ToggleIsFetchingAction => ({ type: TOGGLE_IS_FETCHING, isFetching })
-export const setAuthUserData = (email: string | null, userId: number | null, isAuth: boolean):SetUserDataAction => ({ type: SET_USER_DATA, payload: { email, userId, isAuth } })
-
-export const getAuthUserData = ():ThunkType => {
+export const getAuthUserData = (): ThunkType => {
   return async (dispatch) => {
     const response = await API.me()
-    dispatch(toggleIsFetching(true))
+    dispatch(actionsAuth.toggleIsFetching(true))
     if (response.resultCode === 0) {
       let { email, userId } = response.data
-      dispatch(setAuthUserData(email, userId, true))
-      dispatch(toggleIsFetching(false))
+      dispatch(actionsAuth.setAuthUserData(email, userId, true))
+      dispatch(actionsAuth.toggleIsFetching(false))
     }
   }
 }
 
-export const login = (email: string, password: string):ThunkType => {
+export const login = (email: string, password: string): ThunkType => {
   return async (dispatch) => {
-    dispatch(toggleIsFetching(true))
+    dispatch(actionsAuth.toggleIsFetching(true))
     const response = await API.login(1, email, password)
     if (response.resultCode === 0) {
       dispatch(getAuthUserData())
-      dispatch(toggleIsFetching(false))
+      dispatch(actionsAuth.toggleIsFetching(false))
     }
     else {
       const message = response.messages.length > 0 ? response.messages[0] : "Some error"
@@ -78,11 +80,11 @@ export const login = (email: string, password: string):ThunkType => {
   }
 }
 
-export const logout = ():ThunkType => {
+export const logout = (): ThunkType => {
   return async (dispatch) => {
     const response = await API.logout()
     if (response.resultCode === 0) {
-      dispatch(setAuthUserData(null, null, false))
+      dispatch(actionsAuth.setAuthUserData(null, null, false))
     }
   }
 }

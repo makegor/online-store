@@ -1,4 +1,5 @@
 .basket__none {
+    margin: 10vh auto 5vh auto;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
@@ -51,6 +52,9 @@
     "title"
     "basket" 
     "total";
+    margin: 0 auto 6vh auto;
+    max-width: 700px;
+    padding: 0 20px;
 }
 
 .basket__title {
@@ -64,42 +68,46 @@
 .basket__total {
     margin: 90px auto 0 auto;
     width: auto;
+    background: #5f9ea07e;
+    padding: 20px;
+    border-radius: 10px;
     font-size: 25px;
     grid: total;
     font-family: 'Montserrat';
     font-weight: 200;
+    color: #ffff;
 }
 
 .textTotal {
-    border-top: 3px solid;
-    border-bottom: 3px solid;
+    border-top: 3px solid #000000;
+    border-bottom: 3px solid #000000;
     margin-bottom: 10px;
     padding: 2px 0;
     text-align: end;
 }
 
 .price__total {
-    font-weight: 400;
+    font-weight: 500;
+    font-size: 30px;
 }
 
 .basket__total button {
     margin: 0 0 10px 0;
     width: 100%;
     height: 50px;
-    border: 2px solid;
+    border: 0;
     font-family: "Mohave";
     font-weight: 500;
     font-size: 35px;
     background-color: rgb(223, 209, 209, 0.2);
     transition: all 0.2s ease 0s;
     text-decoration: none;
-    outline: 2px solid;
-    outline-offset: 2px;
-    border-radius: 1%;
+    color: #ffffffb4;
+    border-radius: 10px;
 }
 
 .basket__total button:hover {
-    background-color: rgb(223, 209, 209);
+    background-color: #5f9ea062;
     cursor: pointer;
 }
 
@@ -120,20 +128,28 @@
 .basket__product {
     max-width: 100%;
     max-height: 100%;
+    background: #5f9ea062;
+    padding: 10px 0 10px 10px;
+    border-radius: 10px;
     display: grid;
     grid-template-areas:
-    "des des"
-    "img price";
-    grid-template-columns: 50% 50%;
-    grid-template-rows: auto auto;
+    "img des"
+    "img price"
+    "img btn-del";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 2fr auto;
     grid-gap: 10px;
 }
 
 .description {
     grid-area: des;
     font-family: 'Montserrat';
+    text-transform: uppercase;
+    text-align: end;
+    padding-right: 10px;
     font-weight: 500;
-    color:black
+    color:#000000;
+    font-size: 20px;
 }
 
 .link__product {
@@ -153,23 +169,45 @@
 .price__product {
     grid-area: price;
     display: grid;
-    grid-template-rows: auto auto;
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 10px;
+    font-family: "Mohave";
 }
 
 .price__product span{
     margin: auto 0 0 0;
-    font-size: 40px;
-    font-family: "Mohave";
-    padding-bottom: 20px;
-    text-align: start;
+    font-size: 25px;
+    text-align: end;
 }
 
 .price__productTotal {
     margin: 0 0 auto 0;
-    font-size: 25px;
-    font-family: "Mohave";
-    padding-left: 10px;
-    text-align: start;
+    font-size: 40px;
+    background: #ff0000;
+    right: 0;
+    text-align: end;
+}
+
+.btn__deleteProduct {
+    grid-area: btn-del;
+    border: 0;
+    border-radius: 20px;
+    background: #5f9ea000;
+    font-family: 'Montserrat';
+    font-size: 20px;
+    color: #ce3f3f;
+    text-align: end;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.btn__deleteProduct:hover {
+    background: #ff00002c;
+}
+
+.btn__deleteProduct:active,
+.btn__deleteProduct:disabled {
+    background: #ff000010;
 }
 
 .popup {
@@ -188,7 +226,7 @@
 }
 
 .popup__body {
-    margin: 13rem auto;
+    margin: 35vh auto;
     width: 18rem;
     height: auto;
     background-color: white;
@@ -236,4 +274,36 @@
 .popup__content div:nth-child(5) {
     margin: 5px 0 0 0;
     font-size: 20px;
+}
+
+@media screen and (max-width: 3840px) {
+
+    .basket__total {
+        position: fixed;
+        top: 200px;
+        left: 15vw;
+    }
+
+}
+
+@media screen and (max-width: 1366px) {
+
+    .basket__total {
+        position: fixed;
+        top: 200px;
+        left: 5vw;
+    }
+
+}
+
+@media screen and (max-width: 767px) {
+
+    .basket__total {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 0;
+        background: #5f9ea0;
+    }
+
 }
