@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { addProduct, deleteProduct, plusProduct, minusProduct } from "../../../redux/content-reducer"
 import { getFollowingInProgress } from "../../../redux/content-selectors"
 
-import styles from "./Product.module.css"
+import styles from "./Product.module.scss"
 
 const ProductPage: React.FC<ProductType> = React.memo(({ title, price, description, photo, summ, added, id }) => {
 

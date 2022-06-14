@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 
-import styles from './Fotter.module.css'
+import styles from './Fotter.module.scss'
 
 import logo from '../../assecs/images/logo.png'
 

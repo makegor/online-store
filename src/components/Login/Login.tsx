@@ -6,7 +6,7 @@ import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 import { useTypedSelector } from '../hooks/useTypeSelector'
 
-import styles from './Login.module.css'
+import styles from './Login.module.scss'
 import { PreloaderLogin } from '../common/preloader/preloader'
 
 interface LoginSingIn{

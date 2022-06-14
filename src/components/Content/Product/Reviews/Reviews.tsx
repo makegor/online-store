@@ -5,7 +5,7 @@ import { getReviews } from "../../../../redux/product-selectors"
 import { useDispatch, useSelector } from 'react-redux'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
-import styles from "../Product.module.css"
+import styles from "../Product.module.scss"
 
 const Reviews = () => {
 
@@ -61,16 +61,16 @@ const Reviews = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <textarea
                     className={styles.Textarea}
-                    placeholder="new review..."
+                    placeholder="just do it"
                     {...register('review', {
                         required: "Required field",
                         minLength: {
-                            value: 5,
-                            message: "Minimum 5"
+                            value: 15,
+                            message: "And it's all? Minimum 15"
                         },
                         maxLength: {
                             value: 250,
-                            message: "Maximum 250"
+                            message: "Take it easy. Maximum 250"
                         }
                     })}
                 />

@@ -1,0 +1,363 @@
+@import "../../../index.scss";
+
+.product__full {
+    margin: 5vh auto 0 auto;
+    max-width: 800px;
+    max-height: 100%;
+    padding: 0 100px;
+    display: grid;
+    grid-gap: 10px;
+    font-family: "Roboto";
+    font-weight: 300;
+
+    @media screen and (max-width: 3840px) {
+        grid-template-areas:
+            "photo text"
+            "input input";
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr;
+    }
+
+    @media screen and (max-width: 767px) {
+        grid-template-areas:
+            "photo"
+            "text"
+            "input";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        padding: 0;
+    }
+
+    .product__fullPhoto {
+        grid-area: photo;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+
+        @media screen and (max-width: 3840px) {
+            grid-column: 1 / 2;
+            grid-row: 1;
+        }
+
+        @media screen and (max-width: 767px) {
+            grid-column: 1;
+            grid-row: 1;
+            padding: 0 20px;
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            margin: auto 0;
+            transition: 0.7s;
+            
+        }
+
+        &:hover img {
+            transform: scale(1.5);
+            cursor: zoom-in;
+
+            @media screen and (max-width: 767px) {
+                transform: none;
+                cursor: none;
+            }
+        }
+    }
+
+    .product__info {
+        grid-area: text;
+        position: relative;
+        margin: 0 auto;
+        width: 100%;
+        min-height: 100%;
+        display: grid;
+        grid-template: repeat(2, auto) / 1fr;
+
+        @media screen and (max-width: 3840px) {
+            grid-column: 2 / 3;
+            grid-row: 1;
+        }
+
+        @media screen and (max-width: 767px) {
+            grid-column: 1;
+            grid-row: 2;
+            box-sizing: border-box;
+            padding: 0 20px;
+        }
+
+        .items {
+            font-size: 20px;
+            font-family: "Montserrat";
+            display: grid;
+            grid-template-columns: 1fr auto;
+            grid-row: auto auto;
+            grid-template-areas:
+                "title price"
+                "description description";
+            column-gap: 0.5vw;
+
+            .title {
+                font-weight: 500;
+                grid-area: title;
+                margin-top: auto;
+                margin-bottom: auto;
+                text-align: start;
+                margin-left: 5px;
+            }
+
+            .price {
+                grid-area: price;
+                margin-top: auto;
+                margin-bottom: auto;
+                font-size: 40px;
+                font-weight: 500;
+                text-align: end;
+                background: rgba(143, 77, 77, 0.548);
+                border-radius: 5px;
+            }
+
+            .description {
+                margin-top: 5px;
+                grid-area: description;
+                border-bottom: 1px solid;
+                padding: 10px 5px;
+
+                &:last-child {
+                    border: 0;
+                }
+
+                & b {
+                    text-transform: uppercase;
+                    color: #0009;
+                }
+            }
+
+        }
+    }
+
+    .btn {
+        width: 100%;
+        margin: auto 0 0 0;
+        display: grid;
+        grid-template: 1fr / manmax(auto, 1fr) minmax(auto, 1fr);
+        grid-gap: 5px;
+
+        button {
+            display: inline-block;
+            background-color: $btn;
+            border: none;
+            padding: 10px;
+            @extend %text-style-btn;
+            font-size: 20px;
+            text-align: center;
+            transition: all 0.4s ease 0s;
+            cursor: pointer;
+            margin: 2px;
+
+            &:active {
+                background-color: #000000;
+                transform: scale(0.9);
+            }
+
+            &:disabled {
+                background-color: #00000080;
+            }
+        }
+
+        .button__func {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 2fr;
+            text-align: center;
+            font-family: 'Roboto';
+            font-size: 25px;
+
+            .summ {
+                margin-top: auto;
+                margin-bottom: auto;
+                font-family: "Comfortaa";
+            }
+
+        }
+    }
+
+    .Rewiers {
+        max-width: 100%;
+        grid-area: input;
+        margin-top: 2vh;
+        background: #ffff;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        padding: 10px;
+
+        @media screen and (max-width: 3840px) {
+            grid-column: span 2;
+            grid-row: 2;
+        }
+
+        @media screen and (max-width: 767px) {
+            grid-column: span 1;
+            grid-row: 3;
+        }
+
+        .Textarea {
+            border: 0;
+            background: $main;
+            height: 16vmax;
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-width: 5px;
+            border-radius: 25px;
+            font-size: 25px;
+            font-family: "Roboto";
+            font-weight: 300;
+
+            &::placeholder {
+                color: lighten($color: $btn, $amount: 20%);
+                text-align: center;
+            }
+
+            &:hover,
+            &:focus {
+                box-shadow: 0 0px 10px rgba(0, 0, 0, 0.7);
+                background-color: lighten($color: $main, $amount: 10%);
+            }
+        }
+
+        .rating {
+            display: grid;
+            grid-template-columns: auto auto auto auto 1fr;
+            font-size: 40px;
+            line-height: 0.75;
+
+            .rating__body {
+                position: relative;
+
+                &::before {
+                    content: "★";
+                    display: block;
+                    height: 100%;
+                    width: 100%;
+                    top: 0;
+                    left: 0;
+                    color: #c7ceeb;
+                }
+
+                .rating__activeNot {
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    /* stars control*/
+                    top: 0;
+                    left: 0;
+                    overflow: hidden;
+                }
+
+                .rating__active::before {
+                    content: "★";
+                    position: absolute;
+                    height: 100%;
+                    width: 100%;
+                    top: 0;
+                    left: 0;
+                    color: #ffd300;
+                }
+
+                .rating__items {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                    color: #ffd300;
+
+                    .rating__item {
+                        transform: scale(2.5);
+                        height: 100%;
+                        opacity: 0;
+                        margin: 4px 0 0 10px;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
+        .message__error {
+            box-sizing: border-box;
+            background-color: rgba(255, 0, 0, 0.2);
+            border-radius: 10px;
+            margin: 0 0 20px 0;
+            padding: 5px;
+            font-size: 20px;
+        }
+
+        .button {
+            background-color: lighten($color: $btn, $amount: 50%);
+            border: none;
+            padding: 10px;
+            @extend %text-style-btn;
+            font-size: 20px;
+            text-align: center;
+            transition: all 0.3s ease-out 0s;
+            cursor: pointer;
+            margin: 20px 2px;
+
+            @media screen and (max-width: 3840px) {
+                width: 200px;
+            }
+
+            @media screen and (max-width: 767px) {
+                width: 100%;
+                margin: 20px auto;
+            }
+
+            &:hover {
+                background-color: $btn;
+            }
+
+            &:active {
+                background-color: lighten($color: $btn, $amount: 50%);
+                transform: scale(1.05);
+            }
+        }
+
+        .rewiersElement {
+            grid-area: reviews;
+            grid-column: span 2;
+            margin-top: 25px;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(auto-fit, auto);
+            grid-gap: 2em;
+
+            .rewiers {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto;
+                grid-gap: 5px;
+                border-bottom: 0.1px solid black;
+
+                p {
+                    font-family: "Roboto";
+                    font-weight: 300;
+                    font-size: 20px;
+                    // text-transform: uppercase;
+                    line-height: 1.5;
+                    text-align: end;
+                    overflow-wrap: break-word;
+                    /* overflow: auto; */
+                    max-width: 550px;
+                    margin: 0 0 0 auto;
+
+                    @media screen and (max-width: 767px) {
+                        max-width: 350px;
+                    }
+                }
+            }
+        }
+    }
+}

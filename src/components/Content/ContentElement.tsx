@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 
-import styles from "./Content.module.css"
+import styles from "./Content.module.scss"
 
 interface ContentElement{
     id: string

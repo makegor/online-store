@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom"
 
-import styles from "../Basket.module.css"
+import styles from "../Basket.module.scss"
 import list_empty from "../../../assecs/images/Basket/list-is-empty.png"
 
 interface BasketIsEmpty{

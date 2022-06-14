@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink, Link } from 'react-router-dom'
 
 import cn from 'classnames'
-import styles from './Header.module.css'
+import styles from './Header.module.scss'
 import logo from '../../assecs/images/logo.png'
 
 const Header = () => {

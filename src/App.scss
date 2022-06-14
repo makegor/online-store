@@ -1,5 +1,6 @@
+@import "./index.scss";
+
 .app-wrapper {
-    /* position: absolute; */
     min-height: 100%;
     width: 100%;
     display: grid;
@@ -9,8 +10,12 @@
         "fotter";
     grid-template-columns: 1fr;
     grid-template-rows: 100px 1fr auto;
-    background-color: #dfd1d1b3;
+    background-color: $main;
     overflow: hidden;
+
+    @media screen and (max-width: 767px) {
+        grid-template-rows: 40px minmax(auto, 100%) auto;
+    }
 
 }
 
@@ -22,15 +27,9 @@
     margin: 0 auto;
     grid-area: content;
     padding: 0;
-}
 
-@media screen and (max-width: 767px) {
-
-    .app-wrapper {
-        grid-template-rows: 40px minmax(auto, 100%) auto;
-    }
-
-    .wraper-content {
+    @media screen and (max-width: 767px) {
         max-width: 767px;
     }
+
 }

@@ -4,7 +4,7 @@ import BasketPopup from './BasketPopup'
 import BasketTotal from './BasketTotal'
 import { ProductType } from '../../../types/types'
 
-import styles from "../Basket.module.css"
+import styles from "../Basket.module.scss"
 
 interface BasketIsFull{
     basket: Array<ProductType>

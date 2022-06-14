@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { getIsFetching } from "../../../redux/content-selectors"
 
-import styles from './Paginator.module.css'
+import styles from './Paginator.module.scss'
 import cn from 'classnames'
 import next from '../../../assecs/images/Paginator/icons-next.png'
 import prev from '../../../assecs/images/Paginator/icons-prev.png'

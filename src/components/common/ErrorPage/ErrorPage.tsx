@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import styles from './ErrorPage.module.css'
+import styles from './ErrorPage.module.scss'
 import toHome from '../../../assecs/images/404/AVATARZ.png'
 
 const ErrorPage = React.memo(() => {

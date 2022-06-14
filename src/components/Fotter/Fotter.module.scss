@@ -1,0 +1,168 @@
+@import "../../index.scss";
+
+.Fotter {
+    grid-area: fotter;
+    background-color: $fotter;
+    z-index: 3;
+
+    .container {
+        max-width: 1600px;
+        margin: 0 auto;
+        padding: 0 100px;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(auto, auto);
+        font-size: 17px;
+        font-family: 'Roboto';
+
+        @media screen and (max-width: 767px) {
+            padding: 0 50px;
+        }
+
+        .logo {
+            margin: 10px auto;
+            color: #000;
+            text-decoration: none;
+
+            @media screen and (max-width: 3840px) {
+                display: none;
+            }
+
+            @media screen and (max-width: 767px) {
+                display: grid;
+            }
+
+            img {
+                position: relative;
+                left: 40%;
+            }
+
+            h4 {
+                margin: 0;
+            }
+        }
+
+        .info {
+
+            @media screen and (max-width: 3840px) {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            @media screen and (max-width: 767px) {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+
+            summary {
+                display: block;
+                font-size: 20px;
+                font-weight: 600;
+                border-bottom: 1.5px solid #000000b7;
+                ;
+                margin: 25px 10px 60px 10px;
+                padding-bottom: 1px;
+                cursor: pointer;
+                position: relative;
+                color: #000;
+
+                @media screen and (max-width: 767px) {
+                    margin: 25px 10px;
+                }
+
+                &::marker {
+                    font-size: 0px
+                }
+
+                &::before {
+                    position: absolute;
+                    right: 0;
+                    bottom: 3px;
+                    content: '∟';
+                    transform: rotate(-45deg);
+                    color: #000000b7;
+                    transition: 0.7s all;
+                }
+            }
+
+            .contacts {
+                text-align: start;
+
+                summary {
+                    text-align: center;
+                }
+
+                div div {
+                    margin: 10px 10px;
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+                    grid-gap: 10px;
+                }
+
+            }
+
+            .pay {
+                text-align: center;
+                font-weight: 200;
+
+                p {
+                    margin: 20px 0 0 0;
+                }
+
+                img {
+                    width: 70px;
+                    object-fit: cover;
+                    margin: 10px 5%;
+                }
+            }
+        }
+
+        details[open] summary::before {
+            transform: rotate(-225deg);
+            bottom: -5px;
+            color: #000000b7;
+        }
+
+        details>summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .social {
+            margin: 20px auto;
+
+            a {
+                margin: 0 5px;
+            }
+        }
+
+        .bottom {
+            display: grid;
+            grid-template-columns: 30px 1fr 30px;
+            margin-bottom: 15px;
+
+            span {
+                grid-column: 2 / 3;
+                text-align: center;
+                font-size: 15px;
+                font-weight: 200;
+            }
+
+            img {
+                height: 30px;
+                width: 30px;
+                border-radius: 50%;
+                cursor: pointer;
+
+                @media screen and (max-width: 767px) {
+                    display: none;
+                }
+            }
+        }
+
+    }
+
+    a img {
+        width: 30px;
+    }
+
+}

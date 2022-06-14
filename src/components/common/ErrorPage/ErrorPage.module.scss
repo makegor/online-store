@@ -1,0 +1,97 @@
+.errorPage {
+    width: 100%;
+    height: 96vh;
+    display: grid;
+    grid-template: auto 1fr / 1fr 1fr;
+
+    @media screen and (max-width: 767px) {
+        grid-template: auto auto 1fr / 1fr;
+    }
+
+    .errorTitle {
+        margin-top: 10vh;
+        grid-column: 1 / 2;
+        grid-row: 1;
+
+        @media screen and (max-width: 767px) {
+            margin: 10px 0 0 10px;
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        p {
+            bottom: 0;
+            margin: 0;
+            grid-row: 1;
+            font-family: "Mohave";
+            text-align: start;
+            font-size: 2rem;
+            font-family: "Roboto";
+            font-weight: 100;
+        }
+    }
+
+    .errorLink__toHome {
+        grid-column: 1 / 2;
+        grid-row: 2;
+        width: 100%;
+        margin: 50px 25%;
+
+        @media screen and (max-width: 767px) {
+            grid-column: 1;
+            grid-row: 2;
+            margin: 5px 25%;
+        }
+
+        button {
+            text-align: start;
+            border: 5px solid #0404ff69;
+            padding: 5px;
+            box-shadow: 7px 7px #0404ffc7;
+            transition: 0.2s;
+
+            a {
+                text-align: start;
+                margin: auto;
+                font-size: 40px;
+                text-decoration: none;
+                font-family: "Roboto";
+                font-weight: 300;
+                color: #0404ff;
+            }
+
+            &:hover {
+                transform: translateY(2px);
+                transform: translateX(1px);
+                box-shadow: 6px 6px #0404ffc7;
+            }
+
+            &:active {
+                transform: translateY(7px);
+                transform: translateX(7px);
+                box-shadow: 0 0 #0404ffc7;
+            }
+        }
+    }
+
+    .errorImg {
+        grid-column: 2 / 3;
+        grid-row: span 2;
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        @media screen and (max-width: 767px) {
+            grid-column: 1;
+            grid-row: span 3;
+        }
+
+        img {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+        }
+    }
+}

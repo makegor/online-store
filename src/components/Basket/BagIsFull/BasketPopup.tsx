@@ -2,7 +2,7 @@ import React from 'react'
 import { ProductType } from '../../../types/types'
 
 import cn from "classnames"
-import styles from "../Basket.module.css"
+import styles from "../Basket.module.scss"
 import { PreloaderBasket } from '../../common/preloader/preloader'
 import qrCode from "../../../assecs/images/Basket/qr-code.png"
 

@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { deleteProduct } from "../../../redux/content-reducer"
 import { getFollowingInProgress } from "../../../redux/content-selectors"
 
-import styles from "../Basket.module.css"
+import styles from "../Basket.module.scss"
 
 interface BasketElement {
     id: string
@@ -22,10 +22,11 @@ let BasketElement: React.FC<BasketElement> = React.memo(({ id, title, photo, pri
     return (
         <div>
             <div className={styles.basket__product}>
-                <div className={styles.description}>{title}</div>
-                <Link to={'/product/' + id} className={styles.link__product}>
+                <div className={styles.description}>
+                <Link to={'/product/' + id}>{title}</Link></div>
+                <div className={styles.photo__product}>
                     <img alt="" src={photo} />
-                </Link>
+                </div>
                 <button className={styles.btn__deleteProduct} disabled={followingInProgress.some(Id => Id === id)} onClick={() => { dispatch(deleteProduct(id)) }}>Delete ⊗</button>
                 <div className={styles.price__product}>
                     <span>{summ}^ {price} $</span>

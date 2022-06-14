@@ -6,7 +6,7 @@ import { getContent, getIsFetching, getFollowingInProgress, getPageSize, getTota
 import ContentElement from "./ContentElement"
 import Paginator from '../common/Paginator/Paginator'
 import ErrorPage from '../common/ErrorPage/ErrorPage'
-import styles from "./Content.module.css"
+import styles from "./Content.module.scss"
 import Preloader from "../common/preloader/preloader"
 import mainNewColl from "../../assecs/images/Content/bgMain.jpg"
 

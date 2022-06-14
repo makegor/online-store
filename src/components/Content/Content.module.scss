@@ -1,0 +1,200 @@
+@import "../../index.scss";
+
+.block__element {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(200px, auto));
+    grid-auto-rows: minmax(200px, auto);
+    grid-gap: 30px;
+    margin-top: 5vh;
+    padding: 0 100px;
+
+    @media screen and (max-width: 3840px) {
+        grid-template-columns: repeat(6, minmax(200px, auto));
+    }
+
+    @media screen and (max-width: 1366px) {
+        grid-template-columns: repeat(4, minmax(150px, auto));
+    }
+
+    @media screen and (max-width: 913px) {
+        grid-template-columns: repeat(3, minmax(150px, auto));
+    }
+
+    @media screen and (max-width: 767px) {
+        grid-template-columns: repeat(2, minmax(100px, auto));
+        padding: 0 20px;
+    }
+
+    .element__product {
+        min-height: 100%;
+        max-width: 250px;
+        text-decoration: none;
+        display: grid;
+        grid-template-rows: 1fr auto auto;
+
+        .product__block {
+            text-decoration: none;
+            min-width: 100%;
+            min-height: 100%;
+            position: relative;
+            transition: 0.2s;
+
+            &:hover {
+                transform: scale(1.03);
+
+                @media screen and (max-width: 913px) {
+                    transform: none;
+                }
+            }
+
+            img {
+                max-width: 100%;
+                max-height: 100%;
+                object-fit: cover;
+            }
+
+            .description {
+                align-items: center;
+                color: black;
+                font-size: 15px;
+                font-family: "Montserrat";
+                font-weight: 300;
+                margin: 5px 0 0 5px;
+                white-space: normal;
+                text-decoration: none;
+            }
+        }
+
+        .price {
+            font-size: 25px;
+            font-family: "Montserrat";
+            font-weight: 500;
+            white-space: nowrap;
+            text-decoration: none;
+            text-align: end;
+            margin: 0 5px 0 0;
+
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: manmax(auto, 1fr) minmax(auto, 1fr);
+            grid-gap: 5px;
+
+            button {
+                display: inline-block;
+                background-color: $btn;
+                border: none;
+                padding: 5px;
+                @extend %text-style-btn;
+                font-size: 15px;
+                text-align: center;
+                transition: all 0.4s ease 0s;
+                cursor: pointer;
+                margin: 2px;
+
+                &:active {
+                    background-color: #000000;
+                    transform: scale(0.9);
+                }
+
+                &:disabled {
+                    background-color: #00000080;
+                }
+
+            }
+        }
+
+        .button__func {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 2fr;
+            text-align: center;
+            font-family: 'Roboto';
+
+            .summ {
+                margin-top: auto;
+                margin-bottom: auto;
+                font-family: "Comfortaa";
+            }
+        }
+    }
+}
+
+.mainPage {
+    display: grid;
+    grid-template: auto 1fr / 1fr;
+
+    &__img {
+        position: absolute;
+        left: 0;
+        top: 40px;
+        height: 100vh;
+        width: 100vw;
+        border-bottom: 15px solid $header;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &__item {
+        position: relative;
+        left: 0;
+        height: 96vh;
+        width: 100%;
+
+        button {
+            position: absolute;
+            bottom: 50%;
+            background-color: lighten($color: $btn, $amount: 50%);
+            border: 0;
+
+            &:active,
+            &:hover {
+                background-color: darken($color: $btn, $amount: 30%);
+            }
+
+            a {
+                @extend %text-style-btn;
+                font-size: 30px;
+                text-transform: uppercase;
+                text-decoration: none;
+                padding: 10px;
+            }
+        }
+    }
+
+}
+
+.mainPage__item {
+    position: relative;
+    left: 0;
+    height: 96vh;
+    width: 100%;
+
+    button {
+        position: absolute;
+        bottom: 50%;
+        font-size: 30px;
+        background-color: #000000b7;
+        color: #ffffffe5;
+        border: 0;
+        font-family: "Comfortaa";
+        text-transform: uppercase;
+        padding: 10px;
+
+        &:active,
+        &:hover {
+            background-color: #000000;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ffffffe5;
+            font-family: "Comfortaa";
+            padding: 10px;
+        }
+    }
+}

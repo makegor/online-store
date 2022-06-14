@@ -1,0 +1,74 @@
+.paginator {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: " . prev number next .";
+    grid-gap: 10px;
+    cursor: pointer;
+    margin: 3rem 0;
+    text-align: center;
+
+    &_active {
+        display: none;
+    }
+
+    button {
+        cursor: pointer;
+        margin: 0 auto;
+        height: 2rem;
+        width: 2rem;
+        border: 2px solid rgba(168, 149, 149, 0.801);
+        border-radius: 20%;
+        background-color: rgba(75, 140, 156, 0.2);
+        transition: all 0.2s ease 0s;
+
+        &:active {
+            background-color: rgba(75, 140, 156, 0.8);
+            transform: scale(0.8);
+        }
+
+    }
+
+    img {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+        height: 1.5rem;
+    }
+
+    .prev {
+        grid-area: prev;
+        position: relative;
+    }
+
+    .pageNumbers {
+        grid-area: number;
+        font-family: "Comfortaa";
+        font-weight: 300;
+        margin: auto;
+
+        .pageNumber {
+            font-size: 1.5rem;
+            padding: 0.1rem 0.6rem;
+            border: 1px solid grey;
+            background-color: rgba(75, 140, 156, 0.2);
+            border-radius: 20%;
+            margin: 0 5px;
+
+            &.selectedPage {
+                font-weight: 700;
+                border: none;
+                background-color: burlywood;
+            }
+        }
+    }
+
+    .next {
+        grid-area: next;
+        position: relative;
+    }
+
+}
